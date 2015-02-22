@@ -14,6 +14,7 @@ exports['Exported Properly'] = function(test) {
     test.equal(typeof EventTransmitter, 'function');
     test.equal(typeof et, 'object');
     test.equal(typeof et.listen, 'function');
+    test.equal(typeof et.listen(), 'object');
     test.equal(typeof et.transmit, 'function');
 
     test.done();
@@ -24,7 +25,6 @@ exports['New In'] = function(test) {
     test.expect(1);
 
     var et = new EventTransmitter();
-
     var listener = et.listen();
     test.equal(typeof listener, 'object');
 
@@ -36,11 +36,12 @@ exports['Test Parse'] = function(test) {
 
     var passthroughA = new PassThrough(); // dummy
     var passthroughB = new PassThrough(); // dummy
+    var passthroughC = new PassThrough(); // dummy
 
     var et = new EventTransmitter();
     var listener = et.listen();
 
-    listener.on('header', function(header) {
+    et.on('header', function(header) {
 
         console.log("header", header);
         test.equal(typeof header, 'object');
@@ -49,30 +50,33 @@ exports['Test Parse'] = function(test) {
         test.equal(header.metadata[3], 222);
     });
 
-    listener.on('footer', function(footer) {
+    et.on('footer', function(footer) {
+        console.log("footer", footer);
         test.equal(typeof footer, 'object');
         test.equal(footer.exit_code, 2);
         test.done();
     });
 
-    listener.on('data', function(data) {
+    passthroughC.on('data', function(data) {
         console.log('Stream Data:', data.toString()); // sanitized stream data without header and footer data in buffer
     });
 
-    passthroughA.pipe(et).pipe(passthroughB);
-    passthroughB.pipe(listener);
+    passthroughB.on('data', function(data) {
+        console.log('Stream Data with Event MetaData:', data.toString()); // sanitized stream data without header and footer data in buffer
+    });
 
-    // passthroughA.write('Testing... 123');
-    // passthroughA.end("...Ending");
+    passthroughA.pipe(et).pipe(passthroughB);
+    passthroughB.pipe(listener).pipe(passthroughC);
+
+    passthroughA.write('Testing... 123');    
 
     et.transmit('header', {
         name: "streamA",
         metadata: [23, 33, 221, 222]
     });
 
-    et.transmit('footer', {
-        exit_code: 2
-    });
+    passthroughA.write('Testing Embedde<da39a3ee5e>["footer",{"exit_code":2}]<da39a3ee5e>Code to be removed and sanitized');
+    passthroughA.end("...Ending");
 };
 
 
