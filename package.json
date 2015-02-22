@@ -12,7 +12,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/arjunmehta/stream-event-transmitter.git"
+        "url": "https://github.com/arjunmehta/event-transmitter.git"
     },
     "dependencies": {
         "buffertools": "~2.1.2"
@@ -36,7 +36,7 @@
     "author": "Arjun Mehta",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/arjunmehta/stream-event-transmitter/issues"
+        "url": "https://github.com/arjunmehta/event-transmitter/issues"
     },
-    "homepage": "https://github.com/arjunmehta/stream-event-transmitter"
+    "homepage": "https://github.com/arjunmehta/event-transmitter"
 }
