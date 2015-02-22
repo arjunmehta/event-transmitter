@@ -1,5 +1,7 @@
 # EventTransmitter for Streams
 
+[![Build Status](https://travis-ci.org/arjunmehta/stream-event-transmitter.svg)](https://travis-ci.org/arjunmehta/stream-event-transmitter)
+
 Attach events to any stream pipeline and emit those events at receiving stream endpoints.
 
 EventTransmitter transmits events and their parameters along standard stream pipelines. It requires at least two instances: one to transmit encoded event information, and another to listen for and emit events, sanitizing the stream of event metadata in the process for further piping.
