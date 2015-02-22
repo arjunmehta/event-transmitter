@@ -45,6 +45,5 @@ Have a look at the few examples in the package to see how to transmit events bet
 
 ## License
 
-The MIT License (MIT)
-
+The MIT License (MIT)<br/>
 Copyright (c) 2015 Arjun Mehta
