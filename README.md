@@ -1,6 +1,6 @@
 # EventTransmitter for Streams
 
-[![Build Status](https://travis-ci.org/arjunmehta/stream-event-transmitter.svg)](https://travis-ci.org/arjunmehta/stream-event-transmitter)
+[![Build Status](https://travis-ci.org/arjunmehta/event-transmitter.svg)](https://travis-ci.org/arjunmehta/event-transmitter)
 
 Attach events to any node/io.js stream pipeline and emit those events at receiving stream endpoints.
 
