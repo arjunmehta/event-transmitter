@@ -2,12 +2,10 @@ var stream = require('stream');
 var PassThrough = stream.PassThrough || require('readable-stream').PassThrough;
 
 var EventTransmitter = require('../main');
-// var et = new EventTransmitter();
-
 var brake = require('brake');
 
 exports['Exported Properly'] = function(test) {
-    test.expect(4);
+    test.expect(5);
 
     var et = new EventTransmitter();
 
