@@ -22,8 +22,8 @@ Use EventTransmitter to transmit events (works like `ee.emit`). But first you mu
 
 ```javascript
 var etA = new EventTransmitter()
-etA.pipe(outgoing_stream) // pipe EventTransmitter to some outgoing stream
-etA.transmit('header', {name: 'Event A', codes: [222, 123, 456, 789]}, 'A String') // transmit an event through that outgoing stream
+etA.pipe(outgoing_stream)
+etA.transmit('header', {name: 'Event A', codes: [222, 123, 456, 789]}, 'A String')
 ```
 
 ### Receive and Emit Events Locally
