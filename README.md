@@ -1,5 +1,5 @@
 # EventTransmitter for Streams
-Attach events to any stream channel and emit those events at a receiving stream endpoint.
+Attach events to any stream pipeline and emit those events at a receiving stream endpoint.
 
 EventTransmitter transmits events and their parameters along standard stream pipelines. It requires two instances: one to transmit encoded event information, and another to listen for and emit events, sanitizing the stream of event metadata in the process.
 
