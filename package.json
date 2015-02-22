@@ -1,45 +1,46 @@
 {
-    "name": "event-transmitter",
-    "version": "1.0.1",
-    "description": "Transmit events over any stream pipeline.",
-    "main": "main.js",
-    "browser": {
-        "buffertools": "browserify-buffertools"
-    },
-    "directories": {
-        "example": "example",
-        "test": "test"
-    },
-    "scripts": {
-        "test": "nodeunit test/test.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/arjunmehta/event-transmitter.git"
-    },
-    "dependencies": {
-        "buffertools": "~2.1.2"
-    },
-    "devDependencies": {
-        "brake": "~1.0.1",
-        "nodeunit": "~0.9.0"
-    },
-    "keywords": [
-        "streams",
-        "stream",
-        "events",
-        "event",
-        "emit",
-        "transmit",
-        "transmitter",
-        "eventemitter",
-        "eventtransmitter",
-        "emitter"
-    ],
-    "author": "Arjun Mehta",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/arjunmehta/event-transmitter/issues"
-    },
-    "homepage": "https://github.com/arjunmehta/event-transmitter"
+  "name": "event-transmitter",
+  "version": "1.0.1",
+  "description": "Transmit events over any stream pipeline.",
+  "main": "main.js",
+  "browser": {
+    "buffertools": "browserify-buffertools"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "nodeunit test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arjunmehta/event-transmitter.git"
+  },
+  "dependencies": {
+    "browserify-buffertools": "~1.0.2",
+    "buffertools": "~2.1.2"
+  },
+  "devDependencies": {
+    "brake": "~1.0.1",
+    "nodeunit": "~0.9.0"
+  },
+  "keywords": [
+    "streams",
+    "stream",
+    "events",
+    "event",
+    "emit",
+    "transmit",
+    "transmitter",
+    "eventemitter",
+    "eventtransmitter",
+    "emitter"
+  ],
+  "author": "Arjun Mehta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arjunmehta/event-transmitter/issues"
+  },
+  "homepage": "https://github.com/arjunmehta/event-transmitter"
 }
