@@ -3,6 +3,9 @@
     "version": "1.0.1",
     "description": "Transmit events over any stream pipeline.",
     "main": "main.js",
+    "browser": {
+        "buffertools": "browserify-buffertools"
+    },
     "directories": {
         "example": "example",
         "test": "test"
