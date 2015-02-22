@@ -20,7 +20,7 @@ function EventTransmitter(opts) {
     hash.setEncoding('hex');
     hash.end();
 
-    this.delimiter = hash.read();
+    this.delimiter = '<' + hash.read().substr(0, 10) + '>';
     this.opts = opts;
 }
 
@@ -33,7 +33,7 @@ EventTransmitter.prototype.transmit = function() {
 };
 
 EventTransmitter.prototype.listen = function(stream) {
-    return new Listener(stream, this.opts);
+    return new Listener(stream, this, this.opts);
 };
 
 module.exports = exports = EventTransmitter;
