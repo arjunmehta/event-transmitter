@@ -223,7 +223,7 @@ exports['Braked'] = function(test) {
         et = new EventTransmitter(),
         count = 0;
 
-    passthroughA.pipe(et).pipe(passthroughB).pipe(brake(15)).pipe(et.listen()).pipe(passthroughC);
+    passthroughA.pipe(et).pipe(passthroughB).pipe(brake(150)).pipe(et.listen()).pipe(passthroughC);
 
     et.on('eventer', function(header) {
         test.equal(header.name, 'streamA');
