@@ -36,4 +36,5 @@ EventTransmitter.prototype.listen = function(stream) {
     return new Listener(stream, this, this.opts);
 };
 
+
 module.exports = exports = EventTransmitter;
