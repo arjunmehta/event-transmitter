@@ -109,12 +109,14 @@ exports['Pipe In and Transmit'] = function(test) {
 
     passthroughA.write('Testing 123...');
 
-    et.transmit('header', {
-        name: "streamA",
-        metadata: [23, 33, 221, 222]
-    });
+    setTimeout(function() {
+        et.transmit('header', {
+            name: "streamA",
+            metadata: [23, 33, 221, 222]
+        });
 
-    passthroughA.end('...Ending');
+        passthroughA.end('...Ending');
+    }, 200);
 };
 
 
@@ -152,7 +154,7 @@ exports['Transmit and Emit, single'] = function(test) {
 exports['Arbitrary Number of Arguments'] = function(test) {
     test.expect(6);
 
-    var et = new EventTransmitter()
+    var et = new EventTransmitter();
 
     et.pipe(et.listen());
 
