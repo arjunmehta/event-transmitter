@@ -4,7 +4,6 @@ var PassThrough = stream.PassThrough || require('readable-stream').PassThrough;
 var EventTransmitter = require('../main');
 var brake = require('brake');
 
-
 exports['Exported Properly'] = function(test) {
     test.expect(5);
 
@@ -18,7 +17,6 @@ exports['Exported Properly'] = function(test) {
 
     test.done();
 };
-
 
 exports['Transmit'] = function(test) {
     test.expect(1);
@@ -41,7 +39,6 @@ exports['Transmit'] = function(test) {
         metadata: [23, 33, 221, 222]
     });
 };
-
 
 exports['Pipe In and Transmit'] = function(test) {
     test.expect(3);
@@ -173,7 +170,6 @@ exports['Arbitrary Number of Arguments'] = function(test) {
     }, '76', 76);
 };
 
-
 exports['Sanitation'] = function(test) {
     test.expect(4);
 
@@ -218,14 +214,14 @@ exports['Sanitation'] = function(test) {
 exports['Braked'] = function(test) {
 
     var expected = 'Testing... 123Testing EmbeddedCode to be removed and sanitized...Ending';
-    
+
     test.expect(expected.length + 2);
 
     var passthroughA = new PassThrough(), // dummy
         passthroughB = new PassThrough(), // dummy
         passthroughC = new PassThrough(), // dummy
         et = new EventTransmitter(),
-        count = -1;
+        count = 0;
 
     passthroughA.pipe(et).pipe(passthroughB).pipe(brake(15)).pipe(et.listen()).pipe(passthroughC);
 
@@ -235,9 +231,11 @@ exports['Braked'] = function(test) {
     });
 
     passthroughC.on('data', function(data) {
-        count++;
-        test.equal(expected[count], data.toString());
-        if (count === expected.length - 1) {
+
+        test.equal(expected.substr(count, data.toString().length), data.toString());
+        console.log(count, expected.substr(count, data.toString().length), data.toString());
+        count+= data.toString().length;
+        if (count === expected.length) {
             test.done();
         }
     });
@@ -253,7 +251,6 @@ exports['Braked'] = function(test) {
 
     passthroughA.end("...Ending");
 };
-
 
 exports['tearDown'] = function(done) {
     done();
