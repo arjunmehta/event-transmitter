@@ -1,8 +1,9 @@
 var stream = require('stream');
-var PassThrough = stream.PassThrough || require('readable-stream').PassThrough;
-
-var EventTransmitter = require('../main');
 var brake = require('brake');
+
+var PassThrough = stream.PassThrough || require('readable-stream').PassThrough;
+var EventTransmitter = require('../main');
+
 
 exports['Exported Properly'] = function(test) {
     test.expect(5);
@@ -17,6 +18,7 @@ exports['Exported Properly'] = function(test) {
 
     test.done();
 };
+
 
 exports['Transmit'] = function(test) {
     test.expect(1);
@@ -39,6 +41,7 @@ exports['Transmit'] = function(test) {
         metadata: [23, 33, 221, 222]
     });
 };
+
 
 exports['Pipe In and Transmit'] = function(test) {
     test.expect(3);
@@ -174,6 +177,7 @@ exports['Arbitrary Number of Arguments'] = function(test) {
     }, '76', 76);
 };
 
+
 exports['Sanitation'] = function(test) {
     test.expect(4);
 
@@ -260,6 +264,7 @@ exports['Braked'] = function(test) {
 
     passthroughA.end("...Ending");
 };
+
 
 exports['tearDown'] = function(done) {
     done();
