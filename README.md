@@ -21,8 +21,13 @@ var EventTransmitter = require('event-transmitter')
 Use EventTransmitter to transmit events (works like `ee.emit`). But first you must pipe your EventTransmitter instance to a stream that is connected to where you ultimately want to receive and handle events.
 
 ```javascript
+// create a new EventTransmitter instance
 var etA = new EventTransmitter()
+
+// pipe the EventTransmitter to some outgoing stream
 etA.pipe(outgoing_stream)
+
+// call et.transmit() to send an event down the pipeline
 etA.transmit('header', {name: 'Event A', codes: [222, 123, 456, 789]}, 'A String')
 ```
 
@@ -30,15 +35,20 @@ etA.transmit('header', {name: 'Event A', codes: [222, 123, 456, 789]}, 'A String
 Listen downstream for EventTransmitter events. Just pipe the stream containing the EventTransmitter events to `EventTransmitter.listen()` which will listen for and emit them locally.
 
 ```javascript
+// create a new EventTransmitter instance
 var etB = new EventTransmitter()
+
+// pipe some incoming stream containing encoded events to et.listen()
 incoming_stream.pipe(etB.listen()).pipe(process.stdout)
+
+// set up your event handler to handle events from the pipeline
 etB.on('header', function(obj, str){
     console.log('emitting a "header" event with object:', obj, 'and string:', str)
 })
 ```
 
 ### Important
-**Note:** *EventTransmitter adds event metadata to the stream and should be placed in the pipeline between where data will otherwise be used. Your EventTransmitter instance will sanitize stream content as it passes through its listener, removing event metadata from the stream, restoring the stream contents.*
+**Note:** *EventTransmitter adds event metadata to the streams it is piped through and should be placed in the pipeline between where data will otherwise be used. Your EventTransmitter instance will sanitize stream content as it passes through its listener, removing event metadata from the stream, restoring the stream contents.*
 
 Have a look at the few examples in the package to see how to transmit events between various types of streams, sockets and processes.
 
