@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/arjunmehta/event-transmitter.svg)](https://travis-ci.org/arjunmehta/event-transmitter)
 
-Attach events to any node/io.js stream pipeline and emit those events at receiving stream endpoints.
+Attach events to any stream pipeline and emit those events at receiving stream endpoints. Use in your node/io.js projects and/or in the browser using [browserify](http://browserify.org).
 
 EventTransmitter transmits events and their parameters along standard stream pipelines. It requires at least two instances: one to transmit encoded event information, and another to listen for and emit events, sanitizing the stream of event metadata in the process for further piping.
 
