@@ -69,12 +69,14 @@ exports['Pipe In and Transmit'] = function(test) {
 
     passthroughA.write('Testing 123...');
 
-    et.transmit('header', {
-        name: "streamA",
-        metadata: [23, 33, 221, 222]
-    });
+    setTimeout(function() {
+        et.transmit('header', {
+            name: "streamA",
+            metadata: [23, 33, 221, 222]
+        });
 
-    passthroughA.end('...Ending');
+        passthroughA.end('...Ending');
+    }, 200);
 };
 
 
@@ -234,12 +236,12 @@ exports['Braked'] = function(test) {
 
         test.equal(expected.substr(count, data.toString().length), data.toString());
 
-        for (var i = 1; i < data.toString().length; i++){
+        for (var i = 1; i < data.toString().length; i++) {
             test.equal(true, true); // to match expected test count
         }
 
         console.log(count, expected.substr(count, data.toString().length), data.toString());
-        count+= data.toString().length;
+        count += data.toString().length;
         if (count === expected.length) {
             test.done();
         }
