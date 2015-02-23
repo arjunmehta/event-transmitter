@@ -42,7 +42,6 @@ etB.on('header', function(obj, str){
 
 Have a look at the few examples in the package to see how to transmit events between various types of streams, sockets and processes.
 
-
 ## License
 
 The MIT License (MIT)<br/>
