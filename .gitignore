@@ -27,4 +27,4 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-test/browser_test_compiled.js
+./test/browser_test_compiled.js
