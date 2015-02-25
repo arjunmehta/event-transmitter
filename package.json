@@ -1,52 +1,50 @@
 {
-    "name": "event-transmitter",
-    "version": "1.1.2",
-    "description": "Transmit events over any stream pipeline.",
-    "main": "main.js",
-    "browser": {
-        "buffertools": "browserify-buffertools"
-    },
-    "directories": {
-        "example": "example",
-        "test": "test"
-    },
-    "scripts": {
-        "test": "nodeunit test/test.js && browserify test/browser.js -o test/browser_test_compiled.js && mocha-phantomjs test/browser.html"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/arjunmehta/event-transmitter.git"
-    },
-    "dependencies": {
-        "browserify-buffertools": "~1.0.2",
-        "buffertools": "~2.1.2",
-        "readable-stream": "~1.0.33"
-    },
-    "devDependencies": {
-        "brake": "~1.0.1",
-        "mocha-phantomjs": "~3.5.3",
-        "nodeunit": "~0.9.0",
-        "phantomjs": "~1.9.15",
-        "mocha": "*",
-        "chai": "*",
-        "browserify": "*"
-    },
-    "keywords": [
-        "streams",
-        "stream",
-        "events",
-        "event",
-        "emit",
-        "transmit",
-        "transmitter",
-        "eventemitter",
-        "eventtransmitter",
-        "emitter"
-    ],
-    "author": "Arjun Mehta",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/arjunmehta/event-transmitter/issues"
-    },
-    "homepage": "https://github.com/arjunmehta/event-transmitter"
+  "name": "event-transmitter",
+  "version": "1.1.2",
+  "description": "Transmit events over any stream pipeline.",
+  "main": "main.js",
+  "browser": {
+    "buffertools": "browserify-buffertools"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/test.js && browserify test/test.js -o test/browser_test_compiled.js && mocha-phantomjs test/browser.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arjunmehta/event-transmitter.git"
+  },
+  "dependencies": {
+    "browserify-buffertools": "~1.0.2",
+    "buffertools": "~2.1.2",
+    "readable-stream": "~1.0.33"
+  },
+  "devDependencies": {
+    "brake": "~1.0.1",
+    "browserify": "~9.0.3",
+    "chai": "~2.1.0",
+    "mocha": "~2.1.0",
+    "mocha-phantomjs": "~3.5.3"
+  },
+  "keywords": [
+    "streams",
+    "stream",
+    "events",
+    "event",
+    "emit",
+    "transmit",
+    "transmitter",
+    "eventemitter",
+    "eventtransmitter",
+    "emitter"
+  ],
+  "author": "Arjun Mehta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arjunmehta/event-transmitter/issues"
+  },
+  "homepage": "https://github.com/arjunmehta/event-transmitter"
 }
