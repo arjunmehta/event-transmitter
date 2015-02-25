@@ -11,7 +11,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/test.js && browserify test/test.js -o test/browser_test_compiled.js && mocha-phantomjs test/browser.html"
+    "test": "mocha test/test.js && browserify test/test.js -o test/browser_test_compiled.js && echo '\n  Testing in Browser' && mocha-phantomjs test/browser.html"
   },
   "repository": {
     "type": "git",
