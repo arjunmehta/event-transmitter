@@ -11,23 +11,24 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/test.js && browserify test/test.js -o test/browser_test_compiled.js && echo '\n  Testing in Browser' && mocha-phantomjs test/browser.html"
+    "test": "mocha test/test.js && browserify test/test.js -o test/browser_test_compiled.js && echo '\n  Testing in Browser' && mocha-phantomjs -p ./node_modules/.bin/phantomjs test/browser.html"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/arjunmehta/event-transmitter.git"
   },
   "dependencies": {
-    "browserify-buffertools": "~1.0.2",
-    "buffertools": "~2.1.2",
-    "readable-stream": "~1.0.33"
+    "browserify-buffertools": "1.0.2",
+    "buffertools": "2.1.4",
+    "readable-stream": "2.2.3"
   },
   "devDependencies": {
-    "brake": "~1.0.1",
-    "browserify": "~9.0.3",
-    "chai": "~2.1.0",
-    "mocha": "~2.1.0",
-    "mocha-phantomjs": "~3.5.3"
+    "brake": "1.0.1",
+    "browserify": "9.0.3",
+    "chai": "2.1.0",
+    "mocha": "2.1.0",
+    "mocha-phantomjs": "4.1.0",
+    "phantomjs": "2.1.7"
   },
   "keywords": [
     "streams",
