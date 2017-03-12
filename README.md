@@ -22,27 +22,27 @@ Use EventTransmitter to transmit events (works like `ee.emit`). But first you mu
 
 ```javascript
 // create a new EventTransmitter instance
-var etA = new EventTransmitter()
+var et = new EventTransmitter()
 
 // pipe the EventTransmitter to some outgoing stream
-etA.pipe(outgoing_stream)
+et.pipe(outgoing_stream)
 
 // call et.transmit() to send an event down the pipeline
-etA.transmit('header', {name: 'Event A', codes: [222, 123, 456, 789]}, 'A String')
+et.transmit('header', {name: 'Event A', codes: [222, 123, 456, 789]}, 'A String')
 ```
 
 ### Receive and Emit Events Locally
-Listen downstream for EventTransmitter events. Just pipe the stream containing the EventTransmitter events to `EventTransmitter.listen()` which will listen for and emit them locally.
+Listen downstream for EventTransmitter events. Just pipe the stream containing the EventTransmitter events to a new `EventTransmitter.Listener()` which will listen for and emit them locally.
 
 ```javascript
 // create a new EventTransmitter instance
-var etB = new EventTransmitter()
+var etListener = new EventTransmitter.Listener()
 
 // pipe some incoming stream containing encoded events to et.listen()
-incoming_stream.pipe(etB.listen()).pipe(process.stdout)
+incoming_stream.pipe(etListener).pipe(process.stdout)
 
 // set up your event handler to handle events from the pipeline
-etB.on('header', function(obj, str){
+etListener.on('header', function(obj, str){
     console.log('emitting a "header" event with object:', obj, 'and string:', str)
 })
 ```
@@ -55,4 +55,4 @@ Have a look at the few examples in the package to see how to transmit events bet
 ## License
 
 The MIT License (MIT)<br/>
-Copyright (c) 2015 Arjun Mehta
+Copyright (c) 2017 Arjun Mehta
