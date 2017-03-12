@@ -13,10 +13,10 @@ describe("EventTransmitter Tests", function() {
 
         var et = new EventTransmitter();
 
+        expect(typeof EventTransmitter.Listener).to.equal('function');
+        expect(typeof EventTransmitter.Listener()).to.equal('object');
         expect(typeof EventTransmitter).to.equal('function');
-        expect(typeof et).to.equal('object');
-        expect(typeof et.listen).to.equal('function');
-        expect(typeof et.listen()).to.equal('object');
+        expect(typeof et).to.equal('object');        
         expect(typeof et.transmit).to.equal('function');
     });
 
@@ -86,17 +86,18 @@ describe("EventTransmitter Tests", function() {
     it("Transmit and Emit, single", function(done) {
 
         var et = new EventTransmitter();
+        var etListener = new EventTransmitter.Listener();
 
-        et.pipe(et.listen());
+        et.pipe(etListener);
 
-        et.on('header', function(header) {
+        etListener.on('header', function(header) {
             expect(typeof header).to.equal('object');
             expect(header.name).to.equal('streamA');
             expect(header.metadata[0]).to.equal(23);
             expect(header.metadata[3]).to.equal(222);
         });
 
-        et.on('footer', function(footer) {
+        etListener.on('footer', function(footer) {
             expect(typeof footer).to.equal('object');
             expect(footer.exit_code).to.equal(2);
             done();
@@ -116,10 +117,11 @@ describe("EventTransmitter Tests", function() {
     it("Arbitrary Number of Arguments", function(done) {
 
         var et = new EventTransmitter();
+        var etListener = new EventTransmitter.Listener();
 
-        et.pipe(et.listen());
+        et.pipe(etListener);
 
-        et.on('eventer', function() {
+        etListener.on('eventer', function() {
             expect(typeof arguments[0]).to.equal('object');
             expect(typeof arguments[1]).to.equal('string');
             expect(typeof arguments[2]).to.equal('number');
@@ -142,9 +144,10 @@ describe("EventTransmitter Tests", function() {
             passthroughB = new PassThrough(), // dummy
             passthroughC = new PassThrough(), // dummy
             et = new EventTransmitter(),
+            etListener = new EventTransmitter.Listener(),
             count = 0;
 
-        passthroughA.pipe(et).pipe(passthroughB).pipe(et.listen()).pipe(passthroughC);
+        passthroughA.pipe(et).pipe(passthroughB).pipe(etListener).pipe(passthroughC);
 
         passthroughC.on('data', function(data) {
             count++;
@@ -184,11 +187,12 @@ describe("EventTransmitter Tests", function() {
             passthroughB = new PassThrough(), // dummy
             passthroughC = new PassThrough(), // dummy
             et = new EventTransmitter(),
+            etListener = new EventTransmitter.Listener(),
             count = 0;
 
-        passthroughA.pipe(et).pipe(passthroughB).pipe(brake(150)).pipe(et.listen()).pipe(passthroughC);
+        passthroughA.pipe(et).pipe(passthroughB).pipe(brake(150)).pipe(etListener).pipe(passthroughC);
 
-        et.on('eventer', function(header) {
+        etListener.on('eventer', function(header) {
             expect(header.name).to.equal('streamA');
             expect(typeof header.metadata).to.equal('object');
         });
