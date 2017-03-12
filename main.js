@@ -14,7 +14,7 @@ function EventTransmitter(opts) {
 
     PassThrough.call(this);
 
-    opts = opts || {};    
+    opts = opts || {};
 
     var hash = crypto.createHash('sha1', opts.delimeter || 'jambalaya');
     hash.setEncoding('hex');
@@ -32,7 +32,10 @@ EventTransmitter.prototype.transmit = function() {
     this.push(this.delimiter + JSON.stringify(args) + this.delimiter);
 };
 
-EventTransmitter.prototype.listen = function(stream) {
+
+// class statics
+
+EventTransmitter.Listener = function(stream) {
     return new Listener(stream, this, this.opts);
 };
 
