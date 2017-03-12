@@ -11,11 +11,13 @@ util.inherits(EventTransmitter, PassThrough);
 // main constructor
 
 function EventTransmitter(opts) {
+  var hash;
+
   PassThrough.call(this);
 
   opts = opts || {};
 
-  var hash = crypto.createHash('sha1', opts.delimeter || 'jambalaya');
+  hash = crypto.createHash('sha1', opts.delimeter || 'jambalaya');
   hash.setEncoding('hex');
   hash.end();
 
@@ -34,9 +36,7 @@ EventTransmitter.prototype.transmit = function() {
 
 // class statics
 
-EventTransmitter.Listener = function(stream) {
-  return new Listener(stream, this, this.opts);
-};
+EventTransmitter.Listener = Listener;
 
 
 module.exports = exports = EventTransmitter;

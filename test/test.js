@@ -9,10 +9,12 @@ var EventTransmitter = require('../main');
 describe('EventTransmitter Tests', function() {
   it('Exported OK', function() {
     var et = new EventTransmitter();
+    var etListener = new EventTransmitter.Listener();
 
-    expect(typeof EventTransmitter.Listener).to.equal('function');
-    expect(typeof EventTransmitter.Listener()).to.equal('object');
     expect(typeof EventTransmitter).to.equal('function');
+    expect(typeof EventTransmitter.Listener).to.equal('function');
+
+    expect(typeof etListener).to.equal('object');
     expect(typeof et).to.equal('object');
     expect(typeof et.transmit).to.equal('function');
   });
