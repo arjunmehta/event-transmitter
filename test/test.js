@@ -38,7 +38,6 @@ describe('EventTransmitter Tests', function() {
     });
   });
 
-
   it('Pipe In and Transmit', function(done) {
     var passthroughA = new PassThrough(); // dummy
     var passthroughB = new PassThrough(); // dummy
