@@ -8,7 +8,7 @@ EventTransmitter transmits events and their parameters along standard stream pip
 
 ### Install
 ```bash
-npm install --save event-transmitter
+npm install event-transmitter
 ```
 
 ### Include
@@ -24,33 +24,32 @@ Use EventTransmitter to transmit events (works like `ee.emit`). But first you mu
 // create a new EventTransmitter instance
 var et = new EventTransmitter()
 
-// pipe the EventTransmitter to some outgoing stream
-et.pipe(outgoing_stream)
+// pipe the EventTransmitter to some stream pipeline
+et.pipe(stream_pipeline)
 
 // call et.transmit() to send an event down the pipeline
-et.transmit('header', {name: 'Event A', codes: [222, 123, 456, 789]}, 'A String')
+et.transmit('header', { stuff: 'here is some stuff' }, 'A String')
 ```
 
 ### Receive and Emit Events Locally
 Listen downstream for EventTransmitter events. Just pipe the stream containing the EventTransmitter events to a new `EventTransmitter.Listener()` which will listen for and emit them locally.
 
 ```javascript
-// create a new EventTransmitter instance
+// create a new EventTransmitter Listener instance
 var etListener = new EventTransmitter.Listener()
 
-// pipe some incoming stream containing encoded events to et.listen()
-incoming_stream.pipe(etListener)
+// pipe the stream pipeline with transmitter events to the listener
+stream_pipeline.pipe(etListener)
 
 // set up your event handler to handle events from the pipeline
-etListener.on('header', function(obj, str){
-    console.log('emitting a "header" event with object:', obj, 'and string:', str)
+etListener.on('header', function(stuff, aString){
+  console.log('emitting a "header" event with object:', stuff, 'and string:', aString)
 })
 ```
 
 ### Important
 **Note:** *EventTransmitter adds event metadata to the streams it is piped through and should be placed in the pipeline between where data will otherwise be used. Your EventTransmitter instance will sanitize stream content as it passes through its listener, removing event metadata from the stream, restoring the stream contents.*
 
-Have a look at the few examples in the package to see how to transmit events between various types of streams, sockets and processes.
 
 ## License
 
