@@ -39,7 +39,7 @@ Listen downstream for EventTransmitter events. Just pipe the stream containing t
 var etListener = new EventTransmitter.Listener()
 
 // pipe some incoming stream containing encoded events to et.listen()
-incoming_stream.pipe(etListener).pipe(process.stdout)
+incoming_stream.pipe(etListener)
 
 // set up your event handler to handle events from the pipeline
 etListener.on('header', function(obj, str){
